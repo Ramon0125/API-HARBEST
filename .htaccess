@@ -1,0 +1,19 @@
+RewriteEngine On
+Options All -Indexes
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ $1.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header unset X-Powered-By
+    Header unset Server
+</IfModule>
+
+<FilesMatch "^\.env$">
+    Require all denied
+</FilesMatch>

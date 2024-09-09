@@ -1,0 +1,5 @@
+HarBest-Cloud.code-workspace
+
+*.env
+
+/.vscode/

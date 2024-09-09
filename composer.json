@@ -1,0 +1,21 @@
+{
+    "name": "ramon/api-harbest",
+    "description": "Gestion HarBest",
+    "type": "library",
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "firebase/php-jwt": "^6.10",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ramon\\ApiHarbest\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ramon0125",
+            "email": "ramonemiliolc24@gmail.com"
+        }
+    ]
+}
