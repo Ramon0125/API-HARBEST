@@ -18,3 +18,22 @@ CClave ENUM('T','F') NOT NULL DEFAULT 'F',
 Estatus ENUM('T','F') NOT NULL DEFAULT 'T',
 );
 
+DELIMITER $$
+CREATE PROCEDURE `SP_VALIDAR_LOGIN` (
+    IN in_EMAIL VARCHAR(50),
+    IN in_CLAVE VARCHAR(20)
+)
+BEGIN
+    IF NOT EXISTS (
+        SELECT * 
+        FROM USUARIOS 
+        WHERE Email = in_EMAIL 
+        AND CAST(AES_DECRYPT(Clave, in_EMAIL) AS CHAR(50)) = in_CLAVE 
+        AND Estatus = 'T') THEN SELECT 	 AS MENSAJE;
+    
+    ELSE 
+        SELECT CClave, IDUsuario, Nombres, Apellidos, Privilegios
+        FROM USUARIOS 
+        WHERE Email = in_EMAIL;
+    END IF;
+END $$
